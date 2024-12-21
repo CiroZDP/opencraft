@@ -29,6 +29,9 @@ runs:
     - name: Validate webhook URL
       shell: sh
       run: |
+        # Read inputs
+        WEBHOOK_URL="${{ inputs.url }}"
+
         # Validate webhook URL
         if [ -z "$WEBHOOK_URL" ]; then
           echo "Error: Webhook URL is not provided."
@@ -38,8 +41,6 @@ runs:
     - name: Send the notification
       shell: sh
       run: |
-        # Read inputs
-        WEBHOOK_URL="${{ inputs.url }}"
         CONTENT="${{ inputs.content }}"
         TITLE="${{ inputs.title }}"
         COLOR=${{ inputs.color }}
