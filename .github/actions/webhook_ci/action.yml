@@ -1,5 +1,5 @@
 name: "Webhook CI Notification"
-description: "Send notifications to a Discord webhook"
+description: "Send notifications to a Discord webhook with optional embeds"
 inputs:
   content:
     description: "Optional plain message to send before the embed"
@@ -19,4 +19,31 @@ runs:
   steps:
     - name: Send webhook notification
       shell: bash
-      run: ./entrypoint.sh
+      run: |
+        set -e
+
+        # Read inputs
+        CONTENT="${{ inputs.content }}"
+        WEBHOOK_URL="${{ inputs.url }}"
+        EMBEDS="${{ inputs.embeds }}"
+
+        # Validate webhook URL
+        if [ -z "$WEBHOOK_URL" ]; then
+          echo "Error: Webhook URL is not provided."
+          exit 1
+        fi
+
+        # Construct payload
+        PAYLOAD=$(jq -n \
+          --argjson content "${CONTENT:-null}" \
+          --arg embeds "${EMBEDS}" \
+          '{
+            content: $content,
+            embeds: ($embeds | fromjson)
+          }')
+
+        # Send payload using curl
+        curl -X POST \
+          -H "Content-Type: application/json" \
+          -d "$PAYLOAD" \
+          "$WEBHOOK_URL"
