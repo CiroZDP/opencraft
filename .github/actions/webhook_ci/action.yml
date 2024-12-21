@@ -1,5 +1,5 @@
-name: Notify failure
-description: Sends a notification that compiling a build has failed
+name: Webhook GitHub Integration
+description: Sends a notification to a discord webhook
 inputs:
   BOT_USERNAME:
     description: 'Username to use for the discord bot message'
@@ -11,7 +11,7 @@ inputs:
     default: 'https://avatars.githubusercontent.com/u/169554495?s=128'
     required: false
     type: string
-  NOTIFY_MESSAGE:
+  CONTENT:
     description: 'Notification message to send'
     required: true
     type: string
@@ -23,7 +23,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Notify failure
+    - name: Notification
       shell: sh
       if: ${{ inputs.WEBHOOK_URL != '' }}
       run: |
