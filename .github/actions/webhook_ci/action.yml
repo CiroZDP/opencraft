@@ -1,53 +1,37 @@
-name: "Webhook CI Notification"
-description: "Send notifications to a Discord webhook with optional embeds"
+name: Webhook GitHub Integration
+description: Sends a notification to a discord webhook
 inputs:
-  content:
-    description: "Optional plain message to send before the embed"
+  BOT_USERNAME:
+    description: 'Username to use for the discord bot message'
+    default: 'OpenCraft Builds'
     required: false
-    default: null
     type: string
-  url:
-    description: "Discord webhook URL"
+  BOT_AVATAR:
+    description: 'URL to use for the avatar of the discord bot message'
+    default: 'https://avatars.githubusercontent.com/u/169554495?s=128'
+    required: false
+    type: string
+  CONTENT:
+    description: 'Notification message to send'
     required: true
     type: string
-  embeds:
-    description: "JSON structure for Discord embeds"
-    required: false
+  WEBHOOK_URL:
+    description: 'Discord webhook URL'
+    required: true
     type: string
+
 runs:
   using: "composite"
   steps:
-    - name: Send webhook notification
-      shell: bash
+    - name: Check if webhook URL is empty
+      shell: sh
       run: |
-        set -e
-
-        # Read inputs
-        CONTENT="${{ inputs.content }}"
-        WEBHOOK_URL="${{ inputs.url }}"
-        EMBEDS="${{ inputs.embeds }}"
-
-        # Validate webhook URL
-        if [ -z "$WEBHOOK_URL" ]; then
-          echo "Error: Webhook URL is not provided."
+        if [ -z "${{ inputs.WEBHOOK_URL }}" ]; then
+          echo "Warning: The webhook URL is empty. Please provide a valid URL." >&2
           exit 1
         fi
 
-        # Build payload manually
-        PAYLOAD="{"
-        if [ "$CONTENT" != "null" ] && [ -n "$CONTENT" ]; then
-          PAYLOAD+="\"content\": \"$CONTENT\","
-        fi
-        if [ -n "$EMBEDS" ]; then
-          PAYLOAD+="\"embeds\": $EMBEDS"
-        else
-          # Remove trailing comma if no embeds are present
-          PAYLOAD="${PAYLOAD%,}"
-        fi
-        PAYLOAD+="}"
-
-        # Send payload using curl
-        curl -X POST \
-          -H "Content-Type: application/json" \
-          -d "$PAYLOAD" \
-          "$WEBHOOK_URL"
+    - name: Send the notification
+      shell: sh
+      run: |
+        curl ${{ inputs.WEBHOOK_URL }} -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"${{ inputs.BOT_USERNAME }}\", \"avatar_url\": \"${{ inputs.BOT_AVATAR }}\", \"content\": \"${{ inputs.CONTENT }}\" }"

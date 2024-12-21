@@ -32,22 +32,13 @@ jobs:
           DEST_NAME: 'OpenCraft.exe'
 
       # If the workflow succeded, display more info in the discord webhook
-      - uses: ./.github/actions/webhook_ci
+      - uses: ./.github/actions/build_notifier
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          content: null
+          icon: 'https://img.icons8.com/color/512/windows-11.png'
+          title: 'Windows x32 Build'
+          content: 'This workflow has **succeded**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
           url: '${{ secrets.WEBHOOK_URL }}'
-          embeds: |
-            [
-              {
-                "title": "Windows x32 Build",
-                "description": "This workflow has **succeded**!\\nClick [here]() to see the latest version!",
-                "color": 511007,
-                "thumbnail": {
-                  "url": "https://img.icons8.com/color/512/windows-11.png"
-                }
-              }
-            ]
 
       # If it didn't, display more info in the discord webhook
       - uses: ./.github/actions/webhook_ci
