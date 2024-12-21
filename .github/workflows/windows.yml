@@ -22,7 +22,7 @@ jobs:
         id: compile
         run: |
           sudo apt-get -y install gcc-mingw-w64-i686
-          make linux4windows
+          make linux4windows86
 
       # Upload the artifact
       - uses: ./.github/actions/upload_build
