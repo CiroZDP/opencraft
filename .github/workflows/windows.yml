@@ -1,0 +1,47 @@
+name: Build latest (Windows)
+# trigger via either push to selected branches or on manual run
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-windows
+  cancel-in-progress: true
+
+jobs:
+# x32 Windows
+  build-32:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Windows x32
+        shell: bash
+        id: compile
+        run: |
+          sudo apt-get -y install gcc-mingw-w64-i686
+          make linux4windows
+
+      # Upload the artifact
+      - uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'OpenCraft.exe'
+          DEST_NAME: 'OpenCraft.exe'
+
+      # If the workflow succeded, display more info in the discord webhook
+      - uses: ./.github/actions/webhook_ci
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          CONTENT: 'Failed to compile 32 bit Windows build!'
+          WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
+
+      # If it didn't, display more info in the discord webhook
+      - uses: ./.github/actions/webhook_ci
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          CONTENT: 'Finished compiling x32 Windows build!'
+          WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
+
+# x64 Windows
