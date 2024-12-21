@@ -35,8 +35,19 @@ jobs:
       - uses: ./.github/actions/webhook_ci
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          CONTENT: 'Finished compiling x32 Windows build!'
-          WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
+          content: null
+          url: '${{ secrets.WEBHOOK_URL }}'
+          embeds: |
+            [
+              {
+                "title": "Windows x32 Build",
+                "description": "This workflow has **succeded**!\\nClick [here]() to see the latest version!",
+                "color": 511007,
+                "thumbnail": {
+                  "url": "https://img.icons8.com/color/512/windows-11.png"
+                }
+              }
+            ]
 
       # If it didn't, display more info in the discord webhook
       - uses: ./.github/actions/webhook_ci
