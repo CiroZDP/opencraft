@@ -23,8 +23,15 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Notification
+    - name: Check if webhook URL is empty
       shell: sh
-      if: ${{ inputs.WEBHOOK_URL != '' }}
       run: |
-        curl ${{ inputs.WEBHOOK_URL }} -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"${{ inputs.BOT_USERNAME }}\", \"avatar_url\": \"${{ inputs.BOT_AVATAR }}\", \"content\": \"${{ inputs.NOTIFY_MESSAGE }}\" }"
+        if [ -z "${{ inputs.WEBHOOK_URL }}" ]; then
+          echo "Warning: The webhook URL is empty. Please provide a valid URL." >&2
+          exit 1
+        fi
+
+    - name: Send the notification
+      shell: sh
+      run: |
+        curl ${{ inputs.WEBHOOK_URL }} -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"${{ inputs.BOT_USERNAME }}\", \"avatar_url\": \"${{ inputs.BOT_AVATAR }}\", \"content\": \"${{ inputs.CONTENT }}\" }"
