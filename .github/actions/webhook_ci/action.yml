@@ -33,14 +33,18 @@ runs:
           exit 1
         fi
 
-        # Construct payload
-        PAYLOAD=$(jq -n \
-          --argjson content "${CONTENT:-null}" \
-          --arg embeds "${EMBEDS}" \
-          '{
-            content: $content,
-            embeds: ($embeds | fromjson)
-          }')
+        # Build payload manually
+        PAYLOAD="{"
+        if [ "$CONTENT" != "null" ] && [ -n "$CONTENT" ]; then
+          PAYLOAD+="\"content\": \"$CONTENT\","
+        fi
+        if [ -n "$EMBEDS" ]; then
+          PAYLOAD+="\"embeds\": $EMBEDS"
+        else
+          # Remove trailing comma if no embeds are present
+          PAYLOAD="${PAYLOAD%,}"
+        fi
+        PAYLOAD+="}"
 
         # Send payload using curl
         curl -X POST \
