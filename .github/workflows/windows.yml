@@ -35,12 +35,12 @@ jobs:
       - uses: ./.github/actions/webhook_ci
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          CONTENT: 'Failed to compile 32 bit Windows build!'
+          CONTENT: 'Finished compiling x32 Windows build!'
           WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
 
       # If it didn't, display more info in the discord webhook
       - uses: ./.github/actions/webhook_ci
-        if: ${{ always() && steps.compile.outcome == 'success' }}
+        if: ${{ always() && steps.compile.outcome == 'failure' }}
         with:
-          CONTENT: 'Finished compiling x32 Windows build!'
+          CONTENT: 'Failed to compile 32 bit Windows build!'
           WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
