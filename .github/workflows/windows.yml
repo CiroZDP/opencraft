@@ -44,5 +44,3 @@ jobs:
         with:
           CONTENT: 'Finished compiling x32 Windows build!'
           WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
-
-# x64 Windows
