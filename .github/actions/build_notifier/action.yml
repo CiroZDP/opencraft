@@ -52,5 +52,5 @@ runs:
         # Send request body and header using curl
         curl \
           -H "Content-Type: application/json" \
-          -d $BODY \
-          $WEBHOOK_URL
+          -d "$BODY" \
+          "$WEBHOOK_URL"
