@@ -19,9 +19,8 @@ inputs:
     type: string
   color:
     description: "The color of the embed"
-    required: false
+    required: true
     type: number
-    default: 511007
 
 runs:
   using: "composite"

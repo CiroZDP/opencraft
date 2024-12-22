@@ -4,17 +4,17 @@ CFLAGS =
 
 SOURCE_DIR=src
 INCLUDE_DIR=$(SOURCE_DIR)/netco
-TARGET = main
+TARGET = oc-unix
 
 # Platform detection
 ifeq ($(PLATFORM), windows-86)
     CC = i686-w64-mingw32-gcc
     CFLAGS = -DNC_STDLIB
-    TARGET = main.exe
+    TARGET = oc-x86.exe
 else ifeq ($(PLATFORM), windows-64)
     CC = x86_64-w64-mingw32-gcc
     CFLAGS = -DNC_STDLIB
-    TARGET = main.exe
+    TARGET = oc-x64.exe
 else ifeq ($(PLATFORM), macos)
     CC = o64-clang
     CFLAGS = -DNC_NOSTDLIB

@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-32:
+  x32:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          SOURCE_FILE: 'OpenCraft.exe'
+          SOURCE_FILE: 'oc-x86.exe'
           DEST_NAME: 'OpenCraft-x86.exe'
 
       - name: Notify success on Discord
@@ -42,11 +42,15 @@ jobs:
           icon: 'https://img.icons8.com/color/512/windows-11.png'
           title: 'Windows x32 Build'
           content: 'This workflow has **succeded**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
+          color: 511007
           url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
 
       - name: Notify failure on Discord
-        uses: ./.github/actions/webhook_ci
-        if: ${{ always() && steps.compile.outcome == 'failure' }}
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          CONTENT: 'Failed to compile 32 bit Windows build!'
-          WEBHOOK_URL: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
+          icon: 'https://img.icons8.com/color/512/windows-11.png'
+          title: 'Windows x32 Build'
+          content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version.'
+          color: 16724016
+          url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
