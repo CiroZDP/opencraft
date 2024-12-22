@@ -54,3 +54,47 @@ jobs:
           content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version.'
           color: 16724016
           url: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
+
+  x64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get -y install \
+            gcc-mingw-w64-x86-64
+
+      - name: Compile
+        shell: bash
+        id: compile
+        run: |
+          # Make does the most of the work!
+          make cross PLATFORM=windows-64
+
+      - name: Upload artifact
+        uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'oc-x64.exe'
+          DEST_NAME: 'OpenCraft-x64.exe'
+
+      - name: Notify success on Discord
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          icon: 'https://img.icons8.com/color/512/windows-11.png'
+          title: 'Windows x64 Build'
+          content: 'This workflow has **succeded**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
+          color: 511007
+          url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
+
+      - name: Notify failure on Discord
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'failure' }}
+        with:
+          icon: 'https://img.icons8.com/color/512/windows-11.png'
+          title: 'Windows x64 Build'
+          content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version.'
+          color: 16724016
+          url: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
