@@ -46,22 +46,7 @@ runs:
         COLOR=${{ inputs.color }}
         ICON=${{ inputs.icon }}
 
-        PAYLOAD='
-          {
-            "content": null,
-            "embeds": [
-              {
-                "title": "$TITLE",
-                "description": "$CONTENT",
-                "color": $COLOR,
-                "thumbnail": {
-                  "url": "$ICON"
-                }
-              }
-            ],
-            "attachments": []
-          }
-        '
+        PAYLOAD='{"content":null,"embeds":[{"title":"$TITLE","description":"$CONTENT","color":$COLOR,"thumbnail":{"url":"$ICON"}}],"attachments":[]}'
 
         # Send payload using curl
         curl -X POST \
