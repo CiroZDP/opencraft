@@ -44,7 +44,8 @@ runs:
         CONTENT="${{ inputs.content }}"
         TITLE="${{ inputs.title }}"
         COLOR=${{ inputs.color }}
-        ICON=${{ inputs.icon }}
+        ICON="${{ inputs.icon }}"
+        WEBHOOK_URL="${{ inputs.url }}"
 
         PAYLOAD='{"content":null,"embeds":[{"title":"$TITLE","description":"$CONTENT","color":$COLOR,"thumbnail":{"url":"$ICON"}}],"attachments":[]}'
 
