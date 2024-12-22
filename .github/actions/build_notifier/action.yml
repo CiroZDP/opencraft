@@ -47,7 +47,7 @@ runs:
         ICON="${{ inputs.icon }}"
         WEBHOOK_URL="${{ inputs.url }}"
 
-        BODY='{"content":"","embeds":[{"title":"$TITLE","description":"$CONTENT","color":$COLOR,"thumbnail":{"url":"$ICON"}}],"attachments":[]}'
+        BODY="{\"content\":\"\",\"embeds\":[{\"title\":\"$TITLE\",\"description\":\"$CONTENT\",\"color\":$COLOR,\"thumbnail\":{\"url\":\"$ICON\"}}],\"attachments\":[]}"
 
         # Send request body and header using curl
         curl \
