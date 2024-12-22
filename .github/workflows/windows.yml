@@ -47,10 +47,10 @@ jobs:
 
       - name: Notify failure on Discord
         uses: ./.github/actions/build_notifier
-        if: ${{ always() && steps.compile.outcome == 'success' }}
+        if: ${{ always() && steps.compile.outcome == 'failure' }}
         with:
           icon: 'https://img.icons8.com/color/512/windows-11.png'
           title: 'Windows x32 Build'
           content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version.'
           color: 16724016
-          url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
+          url: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
