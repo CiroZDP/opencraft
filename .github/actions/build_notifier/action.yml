@@ -47,10 +47,10 @@ runs:
         ICON="${{ inputs.icon }}"
         WEBHOOK_URL="${{ inputs.url }}"
 
-        PAYLOAD='{"content":null,"embeds":[{"title":"$TITLE","description":"$CONTENT","color":$COLOR,"thumbnail":{"url":"$ICON"}}],"attachments":[]}'
+        BODY='{"content":null,"embeds":[{"title":"$TITLE","description":"$CONTENT","color":$COLOR,"thumbnail":{"url":"$ICON"}}],"attachments":[]}'
 
-        # Send payload using curl
-        curl -X POST \
+        # Send request body and header using curl
+        curl \
           -H "Content-Type: application/json" \
-          -d "$PAYLOAD" \
-          "$WEBHOOK_URL"
+          -d $BODY \
+          $WEBHOOK_URL
