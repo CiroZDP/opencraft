@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - windows-workflow
   workflow_dispatch:
 
 concurrency:
