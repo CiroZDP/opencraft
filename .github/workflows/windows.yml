@@ -1,5 +1,4 @@
 name: Build latest (Windows)
-# trigger via either push to selected branches or on manual run
 on:
   push:
     branches:
@@ -12,27 +11,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-# x32 Windows
   build-32:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Windows x32
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get -y install \
+            gcc-mingw-w64-i686
+
+      - name: Compile
         shell: bash
         id: compile
         run: |
-          sudo apt-get -y install gcc-mingw-w64-i686
-          make linux4windows86
+          # Make does the most of the work!
+          make cross PLATFORM=windows-86
 
-      # Upload the artifact
-      - uses: ./.github/actions/upload_build
+      - name: Upload artifact
+        uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           SOURCE_FILE: 'OpenCraft.exe'
-          DEST_NAME: 'OpenCraft.exe'
+          DEST_NAME: 'OpenCraft-x86.exe'
 
-      # If the workflow succeded, display more info in the discord webhook
-      - uses: ./.github/actions/build_notifier
+      - name: Notify success on Discord
+        uses: ./.github/actions/build_notifier
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           icon: 'https://img.icons8.com/color/512/windows-11.png'
@@ -40,8 +44,8 @@ jobs:
           content: 'This workflow has **succeded**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
           url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
 
-      # If it didn't, display more info in the discord webhook
-      - uses: ./.github/actions/webhook_ci
+      - name: Notify failure on Discord
+        uses: ./.github/actions/webhook_ci
         if: ${{ always() && steps.compile.outcome == 'failure' }}
         with:
           CONTENT: 'Failed to compile 32 bit Windows build!'

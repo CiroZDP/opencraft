@@ -1,9 +1,15 @@
-OUTPUT_FILE=OpenCraft
-SOURCE_DIR=src
-INCLUDE_DIR=$(SOURCE_DIR)/netco
+.PHONY: cross local
 
-linux4windows86:
-	i686-w64-mingw32-gcc -o $(OUTPUT_FILE).exe $(SOURCE_DIR)/*.c -I"$(INCLUDE_DIR)/"
+# Help for novice users
+help:
+	@echo Usage:
+	@echo   make cross PLATFORM=...           - Compiles for a specific platform
+	@echo     Supported platforms: windows-86, windows-64, macos (test), linux-64
+	@echo   make local                        - Compiles using the local GCC installation
+	@echo   make help                         - Shows this help message
 
-linux4windows64:
-	x86_64-w64-mingw32-gcc -o $(OUTPUT_FILE).exe $(SOURCE_DIR)/*.c -I"$(INCLUDE_DIR)/"
+cross:
+	@$(MAKE) -f crosscompiling.mk PLATFORM=$(PLATFORM)
+
+local:
+	@$(MAKE) -f localbuild.mk
