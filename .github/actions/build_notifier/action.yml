@@ -50,7 +50,8 @@ runs:
         BODY="{\"content\":\"\",\"embeds\":[{\"title\":\"$TITLE\",\"description\":\"$CONTENT\",\"color\":$COLOR,\"thumbnail\":{\"url\":\"$ICON\"}}],\"attachments\":[]}"
 
         # Send request body and header using curl
-        curl \
+        curl -X POST \
+          -H "Accept: application/json" \
           -H "Content-Type: application/json" \
           -d "$BODY" \
           "$WEBHOOK_URL"
