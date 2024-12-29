@@ -1,0 +1,59 @@
+name: Download for MS-DOS
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-msdos
+  cancel-in-progress: true
+
+jobs:
+  build-msdos:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/volkertb/debian-djgpp
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install curl
+        shell: bash
+        run: |
+          apt-get update
+          apt-get -y install curl
+
+      - name: Compile
+        id: compile
+        env:
+          FLAGS: ""
+        run: |
+          cd src
+          i586-pc-msdosdjgpp-gcc *.c ${{ env.FLAGS }} -o oc-stdlib.exe
+
+      - name: Upload artifact
+        uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'src/oc-stdlib.exe'
+          DEST_NAME: 'OpenCraft.exe'
+
+      - name: Notify success on Discord
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/Msdos-icon.png'
+          title: 'MS-DOS Build'
+          content: 'This workflow has **succeeded**.\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/ms-dos.yml) to see the latest version.'
+          color: 511007
+          url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
+
+      - name: Notify failure on Discord
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'failure' }}
+        with:
+          icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/Msdos-icon.png'
+          title: 'MS-DOS Build'
+          content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/ms-dos.yml) to see the latest version.'
+          color: 16724016
+          url: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
