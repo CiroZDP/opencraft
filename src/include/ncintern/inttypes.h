@@ -26,22 +26,22 @@
 
 	# ifdef __UINT8_TYPE__
 		// Has unsigned types by default
-		typedef __UINT8_TYPE__   cc_uint8;
-		typedef __UINT16_TYPE__  cc_uint16;
-		typedef __UINT32_TYPE__  cc_uint32;
-		typedef __UINT64_TYPE__  cc_uint64;
-		typedef __UINTPTR_TYPE__ cc_uintptr;
+		typedef __UINT8_TYPE__   uint8_t;
+		typedef __UINT16_TYPE__  uint16_t;
+		typedef __UINT32_TYPE__  uint32_t;
+		typedef __UINT64_TYPE__  uint64_t;
+		typedef __UINTPTR_TYPE__ uintptr_t;
 	# else
 		// CLang doesn't define the __UINT8_TYPE__
 		// So we need to indicate the sign manually
-		typedef unsigned __INT8_TYPE__   cc_uint8;
-		typedef unsigned __INT16_TYPE__  cc_uint16;
-		typedef unsigned __INT32_TYPE__  cc_uint32;
-		typedef unsigned __INT64_TYPE__  cc_uint64;
-		typedef unsigned __INTPTR_TYPE__ cc_uintptr;
+		typedef unsigned __INT8_TYPE__   uint8_t;
+		typedef unsigned __INT16_TYPE__  uint16_t;
+		typedef unsigned __INT32_TYPE__  uint32_t;
+		typedef unsigned __INT64_TYPE__  uint64_t;
+		typedef unsigned __INTPTR_TYPE__ uintptr_t;
 	# endif
 
-# elif defined NC_SENSITIVE_TYPES
+# else
 	typedef signed char        int8_t;
 	typedef signed short       int16_t;
 	typedef signed int         int32_t;
