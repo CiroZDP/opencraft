@@ -25,14 +25,25 @@ jobs:
       - name: Compile
         shell: bash
         id: compile
+        env:
+          FLAGS: "-m32"
         run: |
-          make cross PLATFORM=linux-86
+          cd src
+          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x86
+          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x86 -DNC_NOSTDLIB
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          SOURCE_FILE: 'oc-unix'
+          SOURCE_FILE: 'src/oc-nostdlib-x86'
+          DEST_NAME: 'OpenCraft-NETCO-x86'
+
+      - name: Upload artifact
+        uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'src/oc-stdlib-x86'
           DEST_NAME: 'OpenCraft-x86'
 
       - name: Notify success on Discord

@@ -18,8 +18,6 @@ else ifeq ($(PLATFORM), windows-64)
 else ifeq ($(PLATFORM), macos)
     CC = o64-clang
     CFLAGS += -DNC_STDLIB
-else ifeq ($(PLATFORM), linux-86)
-    CFLAGS += -m32 -DNC_STDLIB
 else
     $(error Unknown platform: $(PLATFORM))
 endif
