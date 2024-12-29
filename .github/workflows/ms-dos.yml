@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-msdos:
+  build:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/volkertb/debian-djgpp
@@ -29,7 +29,7 @@ jobs:
           FLAGS: ""
         run: |
           cd src
-          i586-pc-msdosdjgpp-gcc *.c ${{ env.FLAGS }} -o oc-stdlib.exe
+          gcc *.c ${{ env.FLAGS }} -o oc-stdlib.exe
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
