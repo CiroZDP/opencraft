@@ -72,8 +72,8 @@ jobs:
           FLAGS: "-m64"
         run: |
           cd src
-          gcc *.c ${{ env.FLAGS }} -o oc-stdlib-x64
-          gcc *.c ${{ env.FLAGS }} -o oc-nostdlib-x64 -DNC_NOSTDLIB
+          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x64
+          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x64 -DNC_NOSTDLIB
 
       - uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
