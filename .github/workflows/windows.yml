@@ -24,7 +24,6 @@ jobs:
         shell: bash
         id: compile
         run: |
-          # Make all the work!
           make cross PLATFORM=windows-86
 
       - name: Upload artifact
@@ -68,7 +67,6 @@ jobs:
         shell: bash
         id: compile
         run: |
-          # Make does the most of the work!
           make cross PLATFORM=windows-64
 
       - name: Upload artifact

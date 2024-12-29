@@ -1,5 +1,4 @@
 name: Download for Linux
-# trigger via either push to selected branches or on manual run
 on:
   push:
     branches:
@@ -21,13 +20,12 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get -y update
-          sudo apt-get -y install gcc-multilib libx11-dev:i386 libxi-dev:i386 libgl1-mesa-dev:i386
+          sudo apt-get -y install gcc-multilib
 
       - name: Compile
         shell: bash
         id: compile
         run: |
-          # Make all the work!
           make cross PLATFORM=linux-86
 
       - name: Upload artifact
@@ -53,6 +51,58 @@ jobs:
         with:
           icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/640px-Tux.svg.png'
           title: 'Linux x32 Build'
+          content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/linux.yml) to see the latest version.'
+          color: 16724016
+          url: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
+
+  x64:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install packages
+        shell: bash
+        run: |
+          sudo apt-get -y update
+
+      - name: Compile
+        shell: bash
+        id: compile
+        env:
+          FLAGS: "-m64"
+        run: |
+          cd src
+          gcc *.c ${{ env.FLAGS }} -o oc-stdlib-x64
+          gcc *.c ${{ env.FLAGS }} -o oc-nostdlib-x64 -DNC_NOSTDLIB
+
+      - uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'src/oc-nostdlib-x64'
+          DEST_NAME: 'OpenCraft-NETCO-x64'
+
+      - uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'src/oc-stdlib-x64'
+          DEST_NAME: 'OpenCraft-x64'
+
+      - name: Notify success on Discord
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/640px-Tux.svg.png'
+          title: 'Linux x64 Build'
+          content: 'This workflow has **succeeded**.\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/linux.yml) to see the latest version.'
+          color: 511007
+          url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
+
+      - name: Notify failure on Discord
+        uses: ./.github/actions/build_notifier
+        if: ${{ always() && steps.compile.outcome == 'failure' }}
+        with:
+          icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/640px-Tux.svg.png'
+          title: 'Linux x64 Build'
           content: 'This workflow has **failed**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/linux.yml) to see the latest version.'
           color: 16724016
           url: '${{ secrets.WEBHOOK_BUILD_FAILED_URL }}'
