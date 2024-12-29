@@ -1,30 +1,30 @@
 # Config variables
 CC = gcc
-CFLAGS =
+CFLAGS = -Wall -Wextra
 
-SOURCE_DIR=src
-INCLUDE_DIR=$(SOURCE_DIR)/netco
+SOURCES = src/*.c
+INCLUDES = -I"src/include/"
 TARGET = oc-unix
 
 # Platform detection
 ifeq ($(PLATFORM), windows-86)
     CC = i686-w64-mingw32-gcc
-    CFLAGS = -DNC_STDLIB
+    CFLAGS += -DNC_STDLIB
     TARGET = oc-x86.exe
 else ifeq ($(PLATFORM), windows-64)
     CC = x86_64-w64-mingw32-gcc
-    CFLAGS = -DNC_STDLIB
+    CFLAGS += -DNC_STDLIB
     TARGET = oc-x64.exe
 else ifeq ($(PLATFORM), macos)
     CC = o64-clang
-    CFLAGS = -DNC_NOSTDLIB
+    CFLAGS += -DNC_STDLIB
 else ifeq ($(PLATFORM), linux-64)
     CC = x86_64-linux-gnu-gcc
-    CFLAGS = -DNC_STDLIB
+    CFLAGS += -DNC_STDLIB
 else
     $(error Unknown platform: $(PLATFORM))
 endif
 
 # Build
 all:
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCE_DIR)/*.c -I"$(INCLUDE_DIR)/"
+	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES) $(INCLUDES)

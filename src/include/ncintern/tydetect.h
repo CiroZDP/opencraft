@@ -9,6 +9,7 @@
 #   elif __GNUC__ && defined(__INT8_TYPE__)
 #     define NC_GCC_OLD_TYPES   1
 #   else
+#     // Unknown compiler
 #     define NC_SENSITIVE_TYPES 1
 #   endif
 

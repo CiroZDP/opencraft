@@ -13,11 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\netco">
-      <UniqueIdentifier>{fbd34d25-b2fa-4bbf-b645-ff5823b7a638}</UniqueIdentifier>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{ad976b42-e221-48f8-a292-4e9fe4ee43a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\netco\internal">
-      <UniqueIdentifier>{429dd87b-97b5-4984-93ed-ba1bf23fd0c5}</UniqueIdentifier>
+    <Filter Include="Header Files\include\ncintern">
+      <UniqueIdentifier>{a8d3a6f2-2636-4503-8cc3-b30bc88a4a19}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -26,20 +26,29 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="netco\nc_stdint.h">
-      <Filter>Header Files\netco</Filter>
+    <ClInclude Include="include\nc_stdbool.h">
+      <Filter>Header Files\include</Filter>
     </ClInclude>
-    <ClInclude Include="netco\netco.h">
-      <Filter>Header Files\netco</Filter>
+    <ClInclude Include="include\nc_stddef.h">
+      <Filter>Header Files\include</Filter>
     </ClInclude>
-    <ClInclude Include="netco\ncintern\osdetect.h">
-      <Filter>Header Files\netco\internal</Filter>
+    <ClInclude Include="include\nc_stdint.h">
+      <Filter>Header Files\include</Filter>
     </ClInclude>
-    <ClInclude Include="netco\ncintern\inttypes.h">
-      <Filter>Header Files\netco\internal</Filter>
+    <ClInclude Include="include\nc_stdlib.h">
+      <Filter>Header Files\include</Filter>
     </ClInclude>
-    <ClInclude Include="netco\ncintern\tydetect.h">
-      <Filter>Header Files\netco\internal</Filter>
+    <ClInclude Include="include\netco.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ncintern\inttypes.h">
+      <Filter>Header Files\include\ncintern</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ncintern\osdetect.h">
+      <Filter>Header Files\include\ncintern</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ncintern\tydetect.h">
+      <Filter>Header Files\include\ncintern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
