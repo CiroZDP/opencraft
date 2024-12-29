@@ -2,7 +2,7 @@ name: Build latest (Windows)
 on:
   push:
     branches:
-      - master
+      - '**'
   workflow_dispatch:
 
 concurrency:
