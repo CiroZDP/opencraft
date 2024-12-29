@@ -1,4 +1,4 @@
-name: Build latest (Windows)
+name: Download for Windows
 on:
   push:
     branches:

@@ -1,4 +1,4 @@
-name: Build latest (Linux)
+name: Download for Linux
 # trigger via either push to selected branches or on manual run
 on:
   push:
