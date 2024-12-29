@@ -84,7 +84,7 @@ jobs:
         with:
           icon: 'https://img.icons8.com/color/512/windows-11.png'
           title: 'Windows x64 Build'
-          content: 'This workflow has **succeded**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
+          content: 'This workflow has **succeeded**.\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
           color: 511007
           url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
 
