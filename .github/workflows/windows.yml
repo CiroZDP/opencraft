@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install packages
         run: |
           sudo apt-get -y install \
             gcc-mingw-w64-i686
@@ -24,7 +24,7 @@ jobs:
         shell: bash
         id: compile
         run: |
-          # Make does the most of the work!
+          # Make all the work!
           make cross PLATFORM=windows-86
 
       - name: Upload artifact
@@ -40,7 +40,7 @@ jobs:
         with:
           icon: 'https://img.icons8.com/color/512/windows-11.png'
           title: 'Windows x32 Build'
-          content: 'This workflow has **succeded**!\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
+          content: 'This workflow has **succeeded**.\\nClick [here](https://github.com/CiroZDP/oc-cplatform/actions/workflows/windows.yml) to see the latest version!'
           color: 511007
           url: '${{ secrets.WEBHOOK_BUILD_SUCCESS_URL }}'
 
