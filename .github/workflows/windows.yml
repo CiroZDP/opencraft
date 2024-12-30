@@ -66,8 +66,12 @@ jobs:
       - name: Compile
         shell: bash
         id: compile
+        env:
+          FLAGS: ""
         run: |
-          make cross PLATFORM=windows-64
+          cd src
+          x86_64-w64-mingw32-gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x64.exe
+          x86_64-w64-mingw32-gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x64.exe -DNC_NOSTDLIB
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
