@@ -15,14 +15,6 @@ BEGIN_EXTERN_C
 #ifndef NETCO_H
 #  define NETCO_H 1
 
-// Idea from C3:
-// This is used when defining functions
-// Not really necessary, just for convenience
-# define fn
-
-// For declaring private functions or variables
-# define priv static
-
 // The os detection
 #  include "ncintern/osdetect.h"
 

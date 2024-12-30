@@ -3,10 +3,10 @@
 # include <nc_stdbool.h>
 # include <stdio.h>
 
-priv fn void test_booleans();
-priv fn void test_types();
+void test_booleans();
+void test_types();
 
-fn int main(void)
+int main(void)
 {
     test_booleans();
     test_types();
