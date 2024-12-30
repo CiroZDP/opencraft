@@ -32,7 +32,7 @@ jobs:
           gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x86
           gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x86 -DNC_NOSTDLIB
 
-      - name: Upload artifact
+      - name: Upload artifact (NETCO)
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
@@ -86,13 +86,15 @@ jobs:
           gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x64
           gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x64 -DNC_NOSTDLIB
 
-      - uses: ./.github/actions/upload_build
+      - name: Upload artifact (NETCO)
+        uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           SOURCE_FILE: 'src/oc-nostdlib-x64'
           DEST_NAME: 'OpenCraft-NETCO-x64'
 
-      - uses: ./.github/actions/upload_build
+      - name: Upload artifact
+        uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           SOURCE_FILE: 'src/oc-stdlib-x64'

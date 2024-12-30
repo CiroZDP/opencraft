@@ -32,19 +32,19 @@ jobs:
           gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib.exe
           gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib.exe -DNC_NOSTDLIB
 
+      - name: Upload artifact (NETCO)
+        uses: ./.github/actions/upload_build
+        if: ${{ always() && steps.compile.outcome == 'success' }}
+        with:
+          SOURCE_FILE: 'src/oc-nostdlib.exe'
+          DEST_NAME: 'OpenCraft-NETCO.exe'
+
       - name: Upload artifact
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           SOURCE_FILE: 'src/oc-stdlib.exe'
           DEST_NAME: 'OpenCraft.exe'
-
-      - name: Upload artifact
-        uses: ./.github/actions/upload_build
-        if: ${{ always() && steps.compile.outcome == 'success' }}
-        with:
-          SOURCE_FILE: 'src/oc-nostdlib.exe'
-          DEST_NAME: 'OpenCraft-NETCO.exe'
 
       - name: Notify success on Discord
         uses: ./.github/actions/build_notifier
