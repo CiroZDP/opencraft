@@ -1,12 +1,12 @@
 # Project settings
 PROJ_ROOT  = ../..
 SOURCE_DIR = $(PROJ_ROOT)/src
-SOURCES    = $(SOURCE_DIR)/*.c
-INCLUDES   =
+SOURCES    = $(SOURCE_DIR)/*.c libglfw3.a
+INCLUDES   = -I"$(SOURCE_DIR)/include/"
 TARGET_DIR = $(PROJ_ROOT)/build/
 
 # Compiler settings
-CFLAGS = $(INCLUDES) -O2 -Wall
+CFLAGS = $(INCLUDES) -O2 -Wall -static -lglfw3 -lopengl32 -lgdi32 -lwinmm
 
 x64: $(SOURCE_DIR)/main.c
 	mkdir $(TARGET_DIR) && x86_64-w64-mingw32-gcc $(CFLAGS) -m64 $(SOURCES) -o $(TARGET_DIR)/oc_win64.exe
