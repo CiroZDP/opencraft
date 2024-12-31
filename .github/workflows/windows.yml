@@ -23,18 +23,15 @@ jobs:
       - name: Compile
         shell: bash
         id: compile
-        env:
-          FLAGS: ""
         run: |
-          cd src
-          i686-w64-mingw32-gcc *.c ${{ env.FLAGS }} -o oc-x86.exe
+          make mingw-x32
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          SOURCE_FILE: 'src/oc-x86.exe'
-          DEST_NAME: 'OpenCraft-x86.exe'
+          SOURCE_FILE: 'build/oc_win32.exe'
+          DEST_NAME: 'OpenCraft-x32.exe'
 
       - name: Notify success on Discord
         uses: ./.github/actions/build_notifier
@@ -69,17 +66,14 @@ jobs:
       - name: Compile
         shell: bash
         id: compile
-        env:
-          FLAGS: ""
         run: |
-          cd src
-          x86_64-w64-mingw32-gcc *.c ${{ env.FLAGS }} -o oc-x64.exe
+          make mingw-x64
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          SOURCE_FILE: 'src/oc-x64.exe'
+          SOURCE_FILE: 'build/oc_win64.exe'
           DEST_NAME: 'OpenCraft-x64.exe'
 
       - name: Notify success on Discord
