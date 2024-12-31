@@ -10,7 +10,7 @@ CC     = gcc
 CFLAGS = $(INCLUDES) -O2 -Wall
 
 x64: $(SOURCE_DIR)/main.c
-	mkdir $(TARGET_DIR) && $(CC) $(CFLAGS) -m64 $(SOURCES) -o $(TARGET_DIR)/oc_linux64
+	mkdir -p $(TARGET_DIR) && $(CC) $(CFLAGS) -m64 $(SOURCES) -o $(TARGET_DIR)/oc_linux64
 
 x32: $(SOURCE_DIR)/main.c
-	mkdir $(TARGET_DIR) && $(CC) $(CFLAGS) -m32 $(SOURCES) -o $(TARGET_DIR)/oc_linux32
+	mkdir -p $(TARGET_DIR) && $(CC) $(CFLAGS) -m32 $(SOURCES) -o $(TARGET_DIR)/oc_linux32

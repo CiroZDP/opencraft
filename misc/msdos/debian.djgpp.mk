@@ -10,4 +10,4 @@ CC     = gcc
 CFLAGS = $(INCLUDES) -O2 -Wall
 
 all: $(SOURCE_DIR)/main.c
-	mkdir $(TARGET_DIR) && $(CC) $(CFLAGS) $(SOURCES) -o $(TARGET_DIR)/oc_msdos.exe
+	mkdir -p $(TARGET_DIR) && $(CC) $(CFLAGS) $(SOURCES) -o $(TARGET_DIR)/oc_msdos.exe
