@@ -7,7 +7,7 @@ TARGET_DIR = $(PROJ_ROOT)/build/
 
 # Compiler settings
 CC     = gcc
-CFLAGS = $(INCLUDES)
+CFLAGS = $(INCLUDES) -O2
 
 all: $(SOURCE_DIR)/main.c
 	mkdir $(TARGET_DIR) && $(CC) $(CFLAGS) $(SOURCES) -o $(TARGET_DIR)/oc_msdos.exe
