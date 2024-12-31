@@ -6,7 +6,7 @@ INCLUDES   = -I"$(SOURCE_DIR)/include/"
 TARGET_DIR = $(PROJ_ROOT)/build/
 
 # Compiler settings
-CFLAGS = $(INCLUDES) -O2 -Wall -static -lglfw3 -lopengl32 -lgdi32 -lwinmm
+CFLAGS = $(INCLUDES) -O2 -Wall -static -Lglfw3 -lopengl32 -lgdi32 -lwinmm
 
 x64: $(SOURCE_DIR)/main.c
 	mkdir $(TARGET_DIR) && x86_64-w64-mingw32-gcc $(CFLAGS) -m64 $(SOURCES) -o $(TARGET_DIR)/oc_win64.exe

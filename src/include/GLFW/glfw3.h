@@ -238,7 +238,11 @@ extern "C" {
 
  #else /*__APPLE__*/
 
+/* patch made by CiroZDP cuz linux's dumbass */
+
+# ifdef _WIN32
   #include <GL/gl.h>
+# endif
   #if defined(GLFW_INCLUDE_GLEXT)
    #include <GL/glext.h>
   #endif
@@ -1131,7 +1135,7 @@ extern "C" {
 #define GLFW_WIN32_SHOWDEFAULT      0x00025002
 /*! @brief Wayland specific
  *  [window hint](@ref GLFW_WAYLAND_APP_ID_hint).
- *  
+ *
  *  Allows specification of the Wayland app_id.
  */
 #define GLFW_WAYLAND_APP_ID         0x00026001
