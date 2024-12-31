@@ -29,21 +29,13 @@ jobs:
           FLAGS: "-m32"
         run: |
           cd src
-          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x86
-          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x86 -DNC_NOSTDLIB
-
-      - name: Upload artifact (NETCO)
-        uses: ./.github/actions/upload_build
-        if: ${{ always() && steps.compile.outcome == 'success' }}
-        with:
-          SOURCE_FILE: 'src/oc-nostdlib-x86'
-          DEST_NAME: 'OpenCraft-NETCO-x86'
+          gcc *.c ${{ env.FLAGS }} -o oc-x86
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          SOURCE_FILE: 'src/oc-stdlib-x86'
+          SOURCE_FILE: 'src/oc-x86'
           DEST_NAME: 'OpenCraft-x86'
 
       - name: Notify success on Discord
@@ -83,21 +75,13 @@ jobs:
           FLAGS: "-m64"
         run: |
           cd src
-          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-stdlib-x64
-          gcc *.c -I"include/" ${{ env.FLAGS }} -o oc-nostdlib-x64 -DNC_NOSTDLIB
-
-      - name: Upload artifact (NETCO)
-        uses: ./.github/actions/upload_build
-        if: ${{ always() && steps.compile.outcome == 'success' }}
-        with:
-          SOURCE_FILE: 'src/oc-nostdlib-x64'
-          DEST_NAME: 'OpenCraft-NETCO-x64'
+          gcc *.c ${{ env.FLAGS }} -o oc-x64
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          SOURCE_FILE: 'src/oc-stdlib-x64'
+          SOURCE_FILE: 'src/oc-x64'
           DEST_NAME: 'OpenCraft-x64'
 
       - name: Notify success on Discord

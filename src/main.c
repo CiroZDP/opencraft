@@ -1,6 +1,5 @@
-# include <netco.h>
-# include <nc_stdint.h>
-# include <nc_stdbool.h>
+# include <stdint.h>
+# include <stdbool.h>
 # include <stdio.h>
 
 void test_booleans();
@@ -14,7 +13,6 @@ int main(void)
     printf("Alright!\n");
 }
 
-/// Using (nc_)stdbool.h
 void test_booleans()
 {
     bool a = true;
@@ -28,7 +26,6 @@ void test_booleans()
         printf("And this.\n");
 }
 
-/// Using (nc_)stdint.h
 void test_types()
 {
     int32_t sint = 3;
