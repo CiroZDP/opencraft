@@ -7,10 +7,10 @@ TARGET_DIR = $(PROJ_ROOT)/build/
 
 # Compiler settings
 CFLAGS  = $(INCLUDES) -O2 -Wall -static
-LDFLAGS = -lopengl32 -lgdi32 -lwinmm
+LDFLAGS =
 
 x64: $(SOURCE_DIR)/main.c
-	mkdir -p $(TARGET_DIR) && x86_64-w64-mingw32-gcc $(CFLAGS) -m64 $(SOURCES) x64/libglfw3.a $(LDFLAGS) -o $(TARGET_DIR)/oc_win64.exe
+	mkdir -p $(TARGET_DIR) && x86_64-w64-mingw32-gcc $(CFLAGS) -m64 $(SOURCES) $(LDFLAGS) -o $(TARGET_DIR)/oc_win64.exe
 
 x32: $(SOURCE_DIR)/main.c
-	mkdir -p $(TARGET_DIR) && i686-w64-mingw32-gcc   $(CFLAGS) -m32 $(SOURCES) x32/libglfw3.a $(LDFLAGS) -o $(TARGET_DIR)/oc_win32.exe
+	mkdir -p $(TARGET_DIR) && i686-w64-mingw32-gcc   $(CFLAGS) -m32 $(SOURCES) $(LDFLAGS) -o $(TARGET_DIR)/oc_win32.exe

@@ -1,7 +1,7 @@
 # Project settings
 PROJ_ROOT  = ../..
 SOURCE_DIR = $(PROJ_ROOT)/src
-SOURCES    = $(SOURCE_DIR)/*.c glfw_src/*.c
+SOURCES    = $(SOURCE_DIR)/*.c
 INCLUDES   = -I"$(SOURCE_DIR)/include/"
 TARGET_DIR = $(PROJ_ROOT)/build/
 
