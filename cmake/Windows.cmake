@@ -29,29 +29,6 @@ endif()
 
 set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 
-message(STATUS "Listing contents of ${CMAKE_SOURCE_DIR}/glfw-unbounded:")
-
-execute_process(
-        COMMAND ls -la ${CMAKE_SOURCE_DIR}/glfw-unbounded
-        OUTPUT_VARIABLE GLFW_LISTING
-        ERROR_VARIABLE GLFW_LISTING_ERROR
-        RESULT_VARIABLE GLFW_LISTING_RESULT
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-
-message(STATUS "GLFW directory contents:\n${GLFW_LISTING}")
-
-if(GLFW_LISTING_RESULT)
-    message(WARNING "Failed to list GLFW directory! Error:\n${GLFW_LISTING_ERROR}")
-endif()
-
-
-message(STATUS "Checking for GLFW library at: ${GLFW_ARCH_DIR}/libglfw3.a")
-
-if(NOT EXISTS "${GLFW_ARCH_DIR}/libglfw3.a")
-    message(FATAL_ERROR "GLFW library not found at ${GLFW_ARCH_DIR}/libglfw3.a")
-endif()
-
 # Build executable
 add_executable(opencraft ${SRC_FILES})
 
