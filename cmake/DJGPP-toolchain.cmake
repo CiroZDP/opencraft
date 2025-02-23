@@ -3,11 +3,11 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR i586)
 
 # Define C compiler
-set(CMAKE_C_COMPILER i586-pc-msdosdjgpp-gcc)
+set(CMAKE_C_COMPILER gcc)
 set(CMAKE_C_COMPILER_WORKS 1)
 
 # Define C++ compiler
-set(CMAKE_CXX_COMPILER i586-pc-msdosdjgpp-g++)
+set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_COMPILER_WORKS 1)
 
 # Define linker
