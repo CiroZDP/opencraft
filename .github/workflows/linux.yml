@@ -20,13 +20,16 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get -y update
-          sudo apt-get -y install gcc-multilib
+          sudo apt-get -y install gcc-multilib cmake
 
       - name: Compile
         shell: bash
         id: compile
         run: |
-          make gcc-x32
+          mkdir -p build
+          cd build
+          cmake .. -DTARGET_LINUX=ON -DTARGET_LINUX_32=ON
+          cmake --build .
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
@@ -64,12 +67,16 @@ jobs:
         shell: bash
         run: |
           sudo apt-get -y update
+          sudo apt-get -y install cmake
 
       - name: Compile
         shell: bash
         id: compile
         run: |
-          make gcc-x64
+          mkdir -p build
+          cd build
+          cmake .. -DTARGET_LINUX=ON -DTARGET_LINUX_64=ON
+          cmake --build .
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build

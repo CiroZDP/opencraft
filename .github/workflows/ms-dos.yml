@@ -21,14 +21,17 @@ jobs:
         shell: bash
         run: |
           apt-get update
-          apt-get -y install curl
+          apt-get -y install curl cmake
 
       - name: Compile
         id: compile
         env:
           FLAGS: ""
         run: |
-          make djgpp-all
+          mkdir -p build
+          cd build
+          cmake .. -DTARGET_MSDOS=ON
+          cmake --build .
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build

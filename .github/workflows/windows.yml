@@ -18,13 +18,16 @@ jobs:
       - name: Install packages
         run: |
           sudo apt-get -y install \
-            gcc-mingw-w64-i686
+            gcc-mingw-w64-i686 cmake
 
       - name: Compile
         shell: bash
         id: compile
         run: |
-          make mingw-x32
+          mkdir -p build
+          cd build
+          cmake .. -DTARGET_WINDOWS=ON -DTARGET_WINDOWS_32=ON
+          cmake --build .
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
@@ -61,13 +64,16 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get -y install \
-            gcc-mingw-w64-x86-64
+            gcc-mingw-w64-x86-64 cmake
 
       - name: Compile
         shell: bash
         id: compile
         run: |
-          make mingw-x64
+          mkdir -p build
+          cd build
+          cmake .. -DTARGET_WINDOWS=ON -DTARGET_WINDOWS_64=ON
+          cmake --build .
 
       - name: Upload artifact
         uses: ./.github/actions/upload_build
