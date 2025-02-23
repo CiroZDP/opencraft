@@ -16,8 +16,6 @@ jobs:
       image: ghcr.io/volkertb/debian-djgpp
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
 
       - name: Update submodules
         run: |
