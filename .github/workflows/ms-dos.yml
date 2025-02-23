@@ -17,16 +17,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update submodules
-        run: |
-          git submodule sync --recursive
-          git submodule update --init --recursive
-
       - name: Install curl
         shell: bash
         run: |
           apt-get update
-          apt-get -y install curl cmake
+          apt-get -y install curl cmake git
+
+      - name: Update submodules
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --recursive
 
       - name: Compile
         id: compile
