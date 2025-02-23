@@ -30,7 +30,7 @@ jobs:
         run: |
           mkdir -p build
           cd build
-          cmake .. -DTARGET_MSDOS=ON
+          cmake .. -DTARGET_MSDOS=ON -DCMAKE_TOOLCHAIN_FILE=../cmake/DJGPP-toolchain.cmake
           cmake --build .
 
       - name: Upload artifact
