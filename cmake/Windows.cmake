@@ -29,6 +29,12 @@ endif()
 
 set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 
+message(STATUS "Checking for GLFW library at: ${GLFW_ARCH_DIR}/libglfw3.a")
+
+if(NOT EXISTS "${GLFW_ARCH_DIR}/libglfw3.a")
+    message(FATAL_ERROR "GLFW library not found at ${GLFW_ARCH_DIR}/libglfw3.a")
+endif()
+
 # Build executable
 add_executable(opencraft ${SRC_FILES})
 
