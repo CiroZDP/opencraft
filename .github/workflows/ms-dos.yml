@@ -23,6 +23,9 @@ jobs:
           apt-get update
           apt-get -y install curl cmake git
 
+      - name: Debug Environment Variable
+        run: echo "GLFW_UNBOUNDED_URL=$GLFW_UNBOUNDED_URL"
+
       - name: Clone submodule
         run: |
           echo Cloning glfw-unbounded...
