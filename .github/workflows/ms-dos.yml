@@ -26,7 +26,7 @@ jobs:
       - name: Clone submodule
         run: |
           echo Cloning glfw-unbounded...
-          git clone ${{env.GLFW_UNBOUNDED_URL}} glfw-unbounded
+          git clone ${{ vars.GLFW_UNBOUNDED_URL }} glfw-unbounded
 
       - name: Compile
         id: compile
