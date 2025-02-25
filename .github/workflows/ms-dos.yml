@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Debug Environment Variable
-        run: echo "GLFW_UNBOUNDED_URL=${GLFW_UNBOUNDED_URL}"
+        run: echo "GLFW_UNBOUNDED_URL=${env.GLFW_UNBOUNDED_URL}"
 
       - name: Install curl
         shell: bash
