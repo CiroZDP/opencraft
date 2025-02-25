@@ -30,8 +30,6 @@ jobs:
 
       - name: Compile
         id: compile
-        env:
-          FLAGS: ""
         run: |
           mkdir -p build
           cd build
