@@ -34,10 +34,10 @@
 ## 🚀 Getting started
 **OpenCraft** is a free alternative to Minecraft, programmed in C using **GLFW** and the custom **OpenGFX** library.
 
-🔹 **Completely free** and open-source.
-🔹 **Fully customizable and moddable** without restrictions.
-🔹 **Optimized for performance**, no unnecessary bloat.
-🔹 **Community-driven**, where anyone can contribute ideas and improvements.
+🔹 **Completely free** and open-source.<br />
+🔹 **Fully customizable and moddable** without restrictions.<br />
+🔹 **Optimized for performance**, no unnecessary bloat.<br />
+🔹 **Community-driven**, where anyone can contribute ideas and improvements.<br />
 
 ### 🎯 Why was this project created?
 Minecraft is a closed-source game with strict licenses. While it can be decompiled, modifying and redistributing a modified version is **illegal**.
@@ -60,15 +60,15 @@ If you want to help, check out our code or join the community.
 
 ## ⚖️ License
 #### **You CAN:**
-✔️ Modify OpenCraft (textures, code, mechanics, etc.).  <br>
-✔️ Distribute your modifications (without impersonating the original authors).  <br>
-✔️ Credit yourself for your version (while giving credit to the original authors).  <br>
+✔️ Modify OpenCraft (textures, code, mechanics, etc.).<br />
+✔️ Distribute your modifications (without impersonating the original authors).<br />
+✔️ Credit yourself for your version (while giving credit to the original authors).<br />
 
 #### **You MUST NOT:**
-❌ Sell the game or its modifications.<br>
-❌ Alter the license document.<br>
-❌ Add malware or malicious code to forks or derivative versions.<br>
-❌ Impersonate the original creators.<br>
+❌ Sell the game or its modifications.<br />
+❌ Alter the license document.<br />
+❌ Add malware or malicious code to forks or derivative versions.<br />
+❌ Impersonate the original creators.<br />
 
 🔹 **You must always give credit to the original authors.**
 🔹 The full license can be found at [BSL 1.0][license-url].
