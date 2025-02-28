@@ -23,114 +23,66 @@
       <b>Explore the docs »</b>
     </a>
     <br />
-    <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=bug.yml">
-      Report Bugs
-    </a>
-    ·
-    <a href="#-download">
-      Download
-    </a>
-    ·
-    <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=feature.yml">
-      Feature Request
-    </a>
+    <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=bug.yml">🐛 Report Bugs</a> ·
+    <a href="#-download">📥 Download</a> ·
+    <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=feature.yml">💡 Suggest Features</a>
   </p>
 </div>
 
 <br />
 
-> [!WARNING]
-> This project **IS NOT** affiliated with Mojang or other minecraft product. <br />
-> This is just a hobby and I do not take care of any uses provided to this utility.
+## 🚀 Getting started
+**OpenCraft** is a free alternative to Minecraft, programmed in C using **GLFW** and the custom **OpenGFX** library.
 
-<br />
+🔹 **Completely free** and open-source.
+🔹 **Fully customizable and moddable** without restrictions.
+🔹 **Optimized for performance**, no unnecessary bloat.
+🔹 **Community-driven**, where anyone can contribute ideas and improvements.
 
-## ✅ Getting started
-**OpenCraft** is a game programmed in C, using GLFW and OpenGFX (custom library).
+### 🎯 Why was this project created?
+Minecraft is a closed-source game with strict licenses. While it can be decompiled, modifying and redistributing a modified version is **illegal**.
 
-### Why this project? 🤔
-I created this project because Minecraft is closed-source. I know that you can decompile it, but modification
-and redistribution of a modified copy of Minecraft is actually illegal. So I created a clone of Minecraft that
-allows modification and redistribution. I want to create a community around this project,
-I hope that you can be part of that community forking the repository or simply, bring us a star :heart:
+OpenCraft aims to be a **free and open alternative** where anyone can modify and distribute their own version without legal issues.
 
-<!---
-<details open>
-  <summary>
-    <h3>Screenshots</h3>
-  </summary><br />
-  <p align="center">
-    <img width="49%" src="assets/images/screenshot1.png" alt="PNG"/>&nbsp;
-    <img width="49%" src="assets/images/screenshot2.png" alt="PNG"/>
-  </p>
-  <div align="center">
-    <img width="80%" src="assets/images/screenshot3.png" alt="PNG"/>
-  </div>
-</details>
-
-
-<div align="right">[ <a href="#-getting-started">↑ Back to top ↑</a> ]</div>
-
--->
-
-## ☕ Download
-**TODO**
-
-<div align="right">[ <a href="#-getting-started">↑ Back to top ↑</a> ]</div>
+💙 **Like the idea? Support us with a ⭐ on GitHub!**
 
 ---
 
-## 🚧 Build
+## 📥 Download
+> **Coming soon...**
 
-Just follow the next simple steps (assuming you have [all the tools installed]())
-
-```bash
-git clone https://github.com/CiroZDP/oc-cplatform
-cd oc-cplatform
-mkdir build
-cd build
-cmake ..
-cmake --build .
-```
-
-The target will be located in the `bin/` folder
+🔧 **We want OpenCraft to be as polished as possible before releasing a playable version!**
+If you want to help, check out our code or join the community.
 
 <div align="right">[ <a href="#-getting-started">↑ Back to top ↑</a> ]</div>
 
 ---
 
 ## ⚖️ License
+#### **You CAN:**
+✔️ Modify OpenCraft (textures, code, mechanics, etc.).  <br>
+✔️ Distribute your modifications (without impersonating the original authors).  <br>
+✔️ Credit yourself for your version (while giving credit to the original authors).  <br>
 
-**You can:**
-- Make modifications of this project. *(includes modifying texture, resources, classes,...)*
-- Redistribute that modifications. *(without impersonating anyone)*
-- Give yourself part of the credits. *(but giving most of the credits to the original authors)*
+#### **You MUST NOT:**
+❌ Sell the game or its modifications.<br>
+❌ Alter the license document.<br>
+❌ Add malware or malicious code to forks or derivative versions.<br>
+❌ Impersonate the original creators.<br>
 
----
-
-**You must not:**
-- Sell the game or its modifications.
-- Change the license document.
-- Put any kind of malware in the code of this repository or any forks of it.
-- Impersonate authors of the project.
-
----
-
-**You must:**
-- Give credits to the original authors of this project.
-
----
-
-**The full license is at [BSL 1.0][license-url].**
+🔹 **You must always give credit to the original authors.**
+🔹 The full license can be found at [BSL 1.0][license-url].
 
 <div align="right">[ <a href="#-getting-started">↑ Back to top ↑</a> ]</div>
 
-<br />
+---
 
 ## 👷‍♂️ Contributors
-| [![CiroZDP](https://avatars.githubusercontent.com/u/161502824?v=4)](https://github.com/CiroZDP) | ![Community](https://cdni.iconscout.com/illustration/free/thumb/free-community-2103591-1768087.png)	|
-|:-----------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------:|
-|                                           **CiroZDP**                                           |                                          **The community**                                          |
+| [![CiroZDP](https://avatars.githubusercontent.com/u/161502824?v=4)](https://github.com/CiroZDP) | ![Community](https://cdni.iconscout.com/illustration/free/thumb/free-community-2103591-1768087.png) |
+|:-----------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|
+| **CiroZDP** *(Founder & Developer)* | **The Community** *(Contributors & Testers)* |
+
+💡 **Want to help?** You can contribute with code, ideas, or simply by leaving a ⭐ on GitHub.
 
 <div align="right">[ <a href="#-getting-started">↑ Back to top ↑</a> ]</div>
 
