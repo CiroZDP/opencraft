@@ -54,5 +54,5 @@ add_executable(opencraft ${SRC_FILES})
 target_compile_options(opencraft PRIVATE -static)
 
 # Link libraries
-link_libraries(opencraft PRIVATE ${GLFW_STATIC_LIB} glfw3 opengl32 gdi32 winmm)
+link_libraries(${GLFW_STATIC_LIB} glfw3 opengl32 gdi32 winmm)
 target_link_libraries(opencraft PRIVATE ${GLFW_STATIC_LIB} glfw3 opengl32 gdi32 winmm)
