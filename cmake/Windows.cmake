@@ -19,6 +19,7 @@ if(TARGET_WINDOWS_64)
 
     # GLFW
     set(GLFW_ARCH_DIR "${GLFW_DIR}/win64")
+
 elseif(TARGET_WINDOWS_32)
     message(STATUS "Building for Windows 32-bit")
     set(CMAKE_SYSTEM_NAME Windows)
@@ -28,36 +29,32 @@ elseif(TARGET_WINDOWS_32)
 
     # GLFW
     set(GLFW_ARCH_DIR "${GLFW_DIR}/win32")
+
+else()
+    message(FATAL_ERROR "No target architecture specified. Use -DTARGET_WINDOWS_64=ON or -DTARGET_WINDOWS_32=ON")
 endif()
 
 set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 
-# Build executable
-add_executable(opencraft ${SRC_FILES})
-
-### BEGIN TESTS ###
 set(GLFW_STATIC_LIB "${GLFW_ARCH_DIR}/libglfw3.a")
-set(GLFW_DLL_LIB "${GLFW_ARCH_DIR}/libglfw3dll.a")
 
 if(NOT EXISTS ${GLFW_STATIC_LIB})
     message(FATAL_ERROR "GLFW static library not found: ${GLFW_STATIC_LIB}")
 endif()
 
-if(NOT EXISTS ${GLFW_DLL_LIB})
-    message(FATAL_ERROR "GLFW DLL library not found: ${GLFW_DLL_LIB}")
-endif()
-
-### END TESTS ###
+# Build executable
+add_executable(opencraft ${SRC_FILES})
 
 # Link GLFW statically
 target_link_libraries(opencraft PRIVATE
-        ${GLFW_ARCH_DIR}/libglfw3.a
+        ${GLFW_STATIC_LIB}
         -static
         -static-libgcc
         -static-libstdc++
         -mwindows
-        -lopengl32
-        -lgdi32
-        -luser32
-        -lshell32
+        opengl32
+        gdi32
+        user32
+        shell32
 )
+
