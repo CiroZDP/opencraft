@@ -57,5 +57,4 @@ target_link_libraries(opencraft PRIVATE
         -static
         -static-libgcc
         -static-libstdc++
-        -mwindows
 )
