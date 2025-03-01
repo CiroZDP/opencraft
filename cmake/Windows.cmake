@@ -46,8 +46,14 @@ endif()
 # Build executable
 add_executable(opencraft ${SRC_FILES})
 
+# Ensure to locate the directory where GLFW is
 link_directories(${GLFW_ARCH_DIR})
+target_link_directories(${GLFW_ARCH_DIR})
+
+# Static linking
+## user won't require additional dlls' ;)
 target_compile_options(opencraft PRIVATE -static)
 
 # Link libraries
+link_libraries(opencraft PRIVATE ${GLFW_STATIC_LIB} glfw3 opengl32 gdi32 winmm)
 target_link_libraries(opencraft PRIVATE ${GLFW_STATIC_LIB} glfw3 opengl32 gdi32 winmm)
