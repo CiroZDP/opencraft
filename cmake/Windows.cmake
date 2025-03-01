@@ -38,6 +38,7 @@ set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 
 set(GLFW_STATIC_LIB "${GLFW_ARCH_DIR}/libglfw3.a")
 
+# Test if GLFW exists
 if(NOT EXISTS ${GLFW_STATIC_LIB})
     message(FATAL_ERROR "GLFW static library not found: ${GLFW_STATIC_LIB}")
 endif()
@@ -46,9 +47,8 @@ endif()
 add_executable(opencraft ${SRC_FILES})
 
 # Link GLFW statically
-target_compile_options(opencraft PRIVATE -static)
-
-target_link_options(opencraft PRIVATE
+target_link_libraries(opencraft PRIVATE
+        ${GLFW_STATIC_LIB}
         -L${GLFW_ARCH_DIR}
         -lglfw3
         -lopengl32
@@ -59,4 +59,3 @@ target_link_options(opencraft PRIVATE
         -static-libstdc++
         -mwindows
 )
-
