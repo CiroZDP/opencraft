@@ -46,15 +46,17 @@ endif()
 add_executable(opencraft ${SRC_FILES})
 
 # Link GLFW statically
-target_link_libraries(opencraft PRIVATE
-        ${GLFW_STATIC_LIB}
+target_compile_options(opencraft PRIVATE -static)
+
+target_link_options(opencraft PRIVATE
+        -L${GLFW_ARCH_DIR}
+        -lglfw3
+        -lopengl32
+        -lgdi32
+        -lwinmm
         -static
         -static-libgcc
         -static-libstdc++
         -mwindows
-        opengl32
-        gdi32
-        user32
-        shell32
 )
 
