@@ -43,11 +43,11 @@ if(NOT EXISTS ${GLFW_STATIC_LIB})
     message(FATAL_ERROR "GLFW static library not found: ${GLFW_STATIC_LIB}")
 endif()
 
-# Build executable
-add_executable(opencraft ${SRC_FILES})
-
 # Ensure to locate the directory where GLFW is
 link_directories(${GLFW_ARCH_DIR})
+
+# Build executable
+add_executable(opencraft ${SRC_FILES})
 
 # Static linking
 ## user won't require additional dlls' ;)
