@@ -11,11 +11,11 @@ set(CMAKE_C_COMPILER gcc)
 set(EXECUTABLE_NAME "oc_msdos")
 set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 
-# Archivos fuente
+# Add glfw.c as a source file
 set(SRC_FILES
-    ${SRC_FILES}  # Mantiene los archivos fuente definidos previamente
-    ${GLFW_DIR}/glfw.c  # Incluye la implementación de GLFW personalizada
+    ${SRC_FILES}        # Keep the source files
+    ${GLFW_DIR}/glfw.c  # Includes glfw.c
 )
 
-# Construcción del ejecutable
+# Build executable
 add_executable(opencraft ${SRC_FILES})
