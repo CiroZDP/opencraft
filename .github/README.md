@@ -6,6 +6,10 @@
 [![Issues][issues-shield]][issues-url]
 [![MPL License][license-shield]][license-url]
 
+
+[![Discord][discord-shield]][discord-url]
+[![Reddit][reddit-shield]][reddit-url]
+
 </div>
 
 <br /><br />
@@ -14,10 +18,10 @@
     <img src="assets/images/icon.png" alt="" height="128" width="128" />
   </a>
 
-  <h3 align="center">OpenCraft</h3>
+  <h3>OpenCraft</h3>
 
-  <p align="center">
-    A roughly calculated clone of Minecraft
+  <p>
+    An open-source, cool and universal sandbox game.
     <br /><br />
     <a href="https://github.com/CiroZDP/oc-cplatform/wiki">
       <b>Explore the docs »</b>
@@ -27,12 +31,14 @@
     <a href="#-download">📥 Download</a> ·
     <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=feature.yml">💡 Suggest Features</a>
   </p>
+  
 </div>
 
 <br />
 
 ## 🚀 Getting started
-**OpenCraft** is a free alternative to Minecraft, programmed in C using **GLFW** and the custom **OpenGFX** library.
+**OpenCraft** is a game made with voxels with that classical blocky look.
+It is coded in the C language. Uses **GLFW** and a custom graphical library.
 
 🔹 **Completely free** and open-source.<br />
 🔹 **Fully customizable and moddable** without restrictions.<br />
@@ -40,7 +46,7 @@
 🔹 **Community-driven**, where anyone can contribute ideas and improvements.<br />
 
 ### 🎯 Why was this project created?
-Minecraft is a closed-source game with strict licenses. While it can be decompiled, modifying and redistributing a modified version is **illegal**.
+Other similar games have a closed-source project with strict licenses. While they can be decompiled, modifying and redistributing a modified version is **illegal**.
 
 OpenCraft aims to be a **free and open alternative** where anyone can modify and distribute their own version without legal issues.
 
@@ -88,6 +94,10 @@ If you want to help, check out our code or join the community.
 
 ---
 
+[reddit-shield]: https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white
+[reddit-url]: https://www.reddit.com/r/OpenCraftMC/
+[discord-shield]: https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white
+[discord-url]: https://discord.gg/bSMtp3DZz8
 [contributors-shield]: https://img.shields.io/github/contributors/CiroZDP/oc-cplatform.svg?style=for-the-badge
 [contributors-url]: https://github.com/CiroZDP/oc-cplatform/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/CiroZDP/oc-cplatform.svg?style=for-the-badge
