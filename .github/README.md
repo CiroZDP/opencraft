@@ -14,7 +14,7 @@
 
 <br /><br />
 <div align="center">
-  <a href="https://github.com/CiroZDP/oc-cplatform">
+  <a href="https://github.com/CiroZDP/opencraft">
     <img src="assets/images/icon.png" alt="" height="128" width="128" />
   </a>
 
@@ -23,15 +23,15 @@
   <p>
     An open-source, cool and universal sandbox game.
     <br /><br />
-    <a href="https://github.com/CiroZDP/oc-cplatform/wiki">
+    <a href="https://github.com/CiroZDP/opencraft/wiki">
       <b>Explore the docs »</b>
     </a>
     <br />
-    <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=bug.yml">🐛 Report Bugs</a> ·
+    <a href="https://github.com/CiroZDP/opencraft/issues/new?template=bug.yml">🐛 Report Bugs</a> ·
     <a href="#-download">📥 Download</a> ·
-    <a href="https://github.com/CiroZDP/oc-cplatform/issues/new?template=feature.yml">💡 Suggest Features</a>
+    <a href="https://github.com/CiroZDP/opencraft/issues/new?template=feature.yml">💡 Suggest Features</a>
   </p>
-  
+
 </div>
 
 <br />
@@ -98,13 +98,13 @@ If you want to help, check out our code or join the community.
 [reddit-url]: https://www.reddit.com/r/OpenCraftMC/
 [discord-shield]: https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white
 [discord-url]: https://discord.gg/bSMtp3DZz8
-[contributors-shield]: https://img.shields.io/github/contributors/CiroZDP/oc-cplatform.svg?style=for-the-badge
-[contributors-url]: https://github.com/CiroZDP/oc-cplatform/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/CiroZDP/oc-cplatform.svg?style=for-the-badge
-[forks-url]: https://github.com/CiroZDP/oc-cplatform/network/members
-[stars-shield]: https://img.shields.io/github/stars/CiroZDP/oc-cplatform.svg?style=for-the-badge
-[stars-url]: https://github.com/CiroZDP/oc-cplatform/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CiroZDP/oc-cplatform.svg?style=for-the-badge
-[issues-url]: https://github.com/CiroZDP/oc-cplatform/issues
-[license-shield]: https://img.shields.io/github/license/CiroZDP/oc-cplatform.svg?style=for-the-badge
-[license-url]: https://github.com/CiroZDP/oc-cplatform/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/CiroZDP/opencraft.svg?style=for-the-badge
+[contributors-url]: https://github.com/CiroZDP/opencraft/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CiroZDP/opencraft.svg?style=for-the-badge
+[forks-url]: https://github.com/CiroZDP/opencraft/network/members
+[stars-shield]: https://img.shields.io/github/stars/CiroZDP/opencraft.svg?style=for-the-badge
+[stars-url]: https://github.com/CiroZDP/opencraft/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CiroZDP/opencraft.svg?style=for-the-badge
+[issues-url]: https://github.com/CiroZDP/opencraft/issues
+[license-shield]: https://img.shields.io/github/license/CiroZDP/opencraft.svg?style=for-the-badge
+[license-url]: https://github.com/CiroZDP/opencraft/blob/master/LICENSE.txt
