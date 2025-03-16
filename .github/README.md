@@ -37,7 +37,7 @@
 <br />
 
 ## 🚀 Getting started
-**OpenCraft** is a game made with voxels with that classical blocky look.
+**OpenCraft** is a game made with voxels that have that classical blocky look.
 It is coded in the C language. Uses **GLFW** and a custom graphical library.
 
 🔹 **Completely free** and open-source.<br />
